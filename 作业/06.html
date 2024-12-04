@@ -26,12 +26,27 @@
       输出: 0
   */
   function fn(num) {
-    let arr = num.toString().split('')//[3,8]
+    // 方法一
+    // let arr = num.toString().split('')//[3,8]
+    // let res = 0
+    // for (let i = 0; i < arr.length; i++) res += Number(arr[i])
+    // return res >= 10 ? fn(res) : res
+    // 方法二
+    let arr = []
+    while (num > 0) {
+      arr.push(num % 10)
+      num = Math.floor(num / 10)
+    }
     let res = 0
-    for (let i = 0; i < arr.length; i++) res += Number(arr[i])
+    for (let i = 0; i < arr.length; i++) res += arr[i]
     return res >= 10 ? fn(res) : res
+
   }
   console.log(fn(38));
+  console.log(fn(3118));
+  console.log(fn(3348));
+  console.log(fn(0));
+
 </script>
 
 </html>
