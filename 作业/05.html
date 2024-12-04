@@ -31,17 +31,11 @@
       输出: ["adsdf", "sfd"]
   */
   function sameRow(words) {
-    let reg1 = /[qwertyuiop]/
-    let reg2 = /[asdfghjkl]/
-    let reg3 = /[zxcvbnm]/
-    let res = []
-    let flag = true
-    for(let i=0;i<words.length;i++){
-      for(let j=0;j<words[i].length;j++){
-        
-      }
+    let reg1 = /^([qwertyuiop]+|[asdfghjkl]+|[zxcvbnm]+)$/i
+    for (let i = 0; i < words.length; i++) {
+      if (!reg1.test(words[i])) words.splice(i, 1)
     }
-    return reg1.test(words[0])
+    return words
   }
   console.log(sameRow(["Hello", "Alaska", "Dad", "Peace"]));
   console.log(sameRow(["omk"]));
