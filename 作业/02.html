@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  //                                                 1  5  10 50 100 500  1000
+  //2.给定一个罗马数字，将其转换为整数。(其中罗马数字包含:I、V、X、L、C、D 和 M)
+  /*
+例如:罗马数字II表示2，即两个并列的1
+      阿拉伯数组12写作XII，即 X + II
+      阿拉伯数组27写作XXVII，即 XX + V + II
+      通常情况下，罗马数字中小的数字在大的数字的右边。
+      但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4
+      同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况:
+        I可以放在 V(5)和X(10)的左边，来表示 4 和 9。
+        X可以放在L(50)和C(100)的左边，来表示40 和 90。
+        C可以放在 D(500)和M(1000)的左边，来表示400和900。
+  */
+  function parseRomeNumber(rome) {
+    let reg = /IV|IX|XL|XC|CD|CM|I|V|X|L|C|D|M/g
+    // 将各个罗马数字分组，特殊情况先判断
+    let romeArr = rome.match(reg)
+    // 和
+    let res = 0
+    for (let i = 0; i < romeArr.length; i++) {
+      // 循环之前分好的数组，用switch-case把数组的各项符号替换成数字
+      switch (romeArr[i]) {
+        case 'IV':
+          romeArr[i] = 4
+          break;
+        case 'IX':
+          romeArr[i] = 9
+          break;
+        case 'XL':
+          romeArr[i] = 40
+          break;
+        case 'XC':
+          romeArr[i] = 90
+          break;
+        case 'CD':
+          romeArr[i] = 400
+          break;
+        case 'CM':
+          romeArr[i] = 900
+          break;
+        case 'I':
+          romeArr[i] = 1
+          break;
+        case 'V':
+          romeArr[i] = 5
+          break;
+        case 'X':
+          romeArr[i] = 10
+          break;
+        case 'L':
+          romeArr[i] = 50
+          break;
+        case 'C':
+          romeArr[i] = 100
+          break;
+        case 'D':
+          romeArr[i] = 500
+          break;
+        case 'M':
+          romeArr[i] = 1000
+          break;
+        default:
+          break;
+      }
+      // 加到和上
+      res += romeArr[i]
+    }
+    // console.log(romeArr);
+    return res
+  }
+  console.log(parseRomeNumber('XXVII'));
+  console.log(parseRomeNumber('CD'));
+  // parseRomeNumber("II" )  =>  2
+  // parseRomeNumber("VI" )  =>  6
+  // parseRomeNumber("IV" )  =>  4
+  // parseRomeNumber("CD" )  =>  400
+</script>
+
+</html>
